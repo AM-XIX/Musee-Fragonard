@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import {Platform, StyleSheet, ActivityIndicator, FlatList, Text, View, Button} from 'react-native'
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import {StyleSheet, ActivityIndicator, FlatList, Text, View, Button} from 'react-native'
+import MapView from 'react-native-maps';
 import About from './component/about'
 import Localisation from './component/localisation'
 import Quizz from './component/quizz'
@@ -44,6 +44,18 @@ export default function App() {
 
       <View style={styles.navigation}>
           <Text>Localisation</Text>
+          <View style={styles.containerMap}>
+    {/*Render our MapView*/}
+      <MapView
+        style={styles.map}
+        //specify our coordinates.
+        initialRegion={{
+          latitude: 48.812599,
+          longitude: 2.422406,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}/>
+    </View>
       </View>
 
       <View style={styles.navigation}>
@@ -83,24 +95,6 @@ export default function App() {
   );
 }
 
-
-class localisation extends React.Component {
-  render() {
-    return (
-      <MapView
-         style={{ flex: 1 }}
-         provider={PROVIDER_GOOGLE}
-         showsUserLocation
-         initialRegion={{
-         latitude: 37.78825,
-         longitude: -122.4324,
-         latitudeDelta: 0.0922,
-         longitudeDelta: 0.0421}}
-      />
-    );
-  }
-}
-
 const styles = StyleSheet.create({
   // container: {
   //   flex: 1,
@@ -108,18 +102,28 @@ const styles = StyleSheet.create({
   //   alignItems: 'center',
   //   justifyContent: 'center',
   // },
-  // navigation:{
-  //   backgroundColor: '#3d314a',
-  //   height:'20%',
-  //   width: '100%',
-  //   justifyContent: 'center',
-  //   fontSize: 15,
-  // }
-  // choix: {
-  //   flex: 1,
-  //   flexDirection: "row",
-  //   justifyContent: "space-around",
-  //   width: "100%",
-  // }
+  navigation:{
+    // backgroundColor: '#3d314a',
+    height:'20%',
+    width: '100%',
+    justifyContent: 'center',
+    fontSize: 15,
+  },
+  choix: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "100%",
+  },
+  map: {
+    width:"50%",
+    height:"50%",
+  },
+  containerMap: {
+    ...StyleSheet.absoluteFillObject,
+    flex: 1, //the container will fill the whole screen.
+    justifyContent: "flex-end",
+    alignItems: "center",
+  },
 
 });
