@@ -5,7 +5,7 @@ header("Access-Control-Allow-Origin: *");
 // Fournir un résultat en JSON :
 header('content-type:application/json');
 
-$bdd=  new PDO('mysql:host=localhost;dbname=musee_veterinaire', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+$bdd=  new PDO('mysql:host=sqletud.u-pem.fr;dbname=sally.niasse_db', 'sally.niasse', 'bdd2022', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 $sql1= "SELECT * FROM quizz";
 $result= $bdd->query($sql1);
 $result->execute(); 

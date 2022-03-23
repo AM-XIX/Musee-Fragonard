@@ -6,6 +6,7 @@ export default class Quizz extends React.Component{
         return (
            <View>
                <Text>Quizz</Text>
+               <Text>Lorem Lorem</Text>
            </View>
         )
     }
