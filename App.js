@@ -9,7 +9,6 @@ import Quizz from './component/quizz'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Alert } from 'react-native-web';
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Tab = createNativeStackNavigator();
 
@@ -38,11 +37,11 @@ export default function App() {
   return (
     
     <View style={styles.container}>
-      <View style={styles.navigation}>
+      <View style={styles.propos}>
           <Text>Musée Fragonard de l'Ecole Nationale Vétérinaire d'Alfort </Text>
       </View>
 
-      <View style={styles.navigation}>
+      <View style={styles.localisation}>
           <Text>Localisation</Text>
           <View style={styles.containerMap}>
     {/*Render our MapView*/}
@@ -58,7 +57,7 @@ export default function App() {
     </View>
       </View>
 
-      <View style={styles.navigation}>
+      <View style={styles.quizz}>
           <Text>Quizz</Text>
       <View style={{ flex: 1, flexDirection: "row",padding: 24 }}>
       {isLoading ? <ActivityIndicator/> : (
@@ -79,8 +78,8 @@ export default function App() {
     </View>
 
       </View>
-      <View style={styles.navigation}>
-          <Text>A propos</Text>
+      <View style={styles.reseau}>
+          <Text>Partager ce que vous avez appris </Text>
       </View>
 
 
@@ -96,15 +95,28 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  // container: {
-  //   flex: 1,
-  //   backgroundColor: '#fff',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  // },
-  navigation:{
-    // backgroundColor: '#3d314a',
-    height:'20%',
+  container: {
+    flex: 1,
+    width: "100%",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  propos:{
+    height:'30%',
+    width: '100%',
+    justifyContent: 'center',
+    textAlign: "justify",
+    fontSize: 15,
+  },
+  quizz:{
+    height:'30%',
+    width: '100%',
+    justifyContent: 'center',
+    fontSize: 15,
+  },
+  localisation:{
+    height:'30%',
     width: '100%',
     justifyContent: 'center',
     fontSize: 15,
@@ -116,8 +128,8 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   map: {
-    width:"50%",
-    height:"50%",
+    width:"100%",
+    height:"75%",
   },
   containerMap: {
     ...StyleSheet.absoluteFillObject,
@@ -125,5 +137,8 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     alignItems: "center",
   },
+  item:{
+    height:"50px",
+  }
 
 });
